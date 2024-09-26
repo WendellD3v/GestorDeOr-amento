@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #1E2638
+}
+
+/* Login Section */
+
+@keyframes slide-left-show {
+    from{
+        width: 50%;
+        opacity: 0%;
+    }
+    to{
+        width: 100%;
+    }
+}
+
+@keyframes slide-left-close {
+    from{
+        width: 100%;
+        opacity: 100%;
+    }
+    to{
+        width: 50%;
+        opacity: 0%;
+    }
+}
+
+section#Login{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    animation-name: slide-left-show;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+
+}
+
+section#Login.close{
+    opacity: 0%;
+    animation-name: slide-left-close;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+}
+
+section#Login .login{
+
+    background-color: #3B404D;
+    padding: 50px 50px;
+    border-radius: 10px;
+}
+
+section#Login .login h1{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    color: #FFFFFF;
+    margin: 50px 0px;
+}
+
+section#Login .login label{
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 10px;
+    color: #FFFFFF;
+}
+
+section#Login .login input[type='number']{
+    font-family: 'Inter', sans-serif;
+    color: #FFFFFF;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    border-style: none;
+    border: 1px solid #929292;
+    border-radius: 20px;
+    width: 100%;
+}
+
+section#Login .login input[type='number']::placeholder{
+    text-align: center;
+    color: #636363;
+}
+
+section#Login .login .send{
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    
+}
+
+section#Login .login input[type='submit']{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: #FFFFFF;
+    padding: 10px 30px;
+    background-color: #546794;
+    border-style: none;
+    border-radius: 5px;
+}
+
+section#Login .login input[type='submit']:hover{
+    cursor: pointer;
+    background-color: #34539c;
+}
+
+/* Gestor Section */
+
+section#Gestor .main-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 50px;
+    width: 100%;
+}
+
+section#Gestor .main-container .general-info{
+    background-color: #3B404D;
+    height: fit-content;
+    
+}
+
+section#Gestor .main-container .general-saldo {
+    width: 30%;
+    padding: 10px 30px;
+    background-color: #3B404D;
+    border-radius: 5px;
+}
+
+section#Gestor .main-container .general-saldo .saldo-title{
+    font-family: 'Inter', sans-serif;
+    
+    color: #FFFFFF;
+    padding: 30px 0px;
+    text-align: center;
+}
+
+section#Gestor .main-container .general-saldo .relatorio p{
+    font-family: 'Inter', sans-serif;
+    color: #FFFFFF;
+    margin: 10px 0px;
+}
+
+section#Gestor .main-container .general-saldo .total-saldo{
+    text-align: center;
+}
+
+section#Gestor .main-container .general-saldo .total-saldo h2{
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    color: #FFFFFF;
+}
+
+section#Gestor .main-container .general-saldo .total-saldo h1{
+    font-family: 'Inter', sans-serif;
+    font-size: 35px;
+    color: #FFFFFF;
+}
+
+section#Gestor .main-container .general-saldo .gestor-actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
