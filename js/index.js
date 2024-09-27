@@ -75,5 +75,6 @@ function loadMoney(){
                 </div>
             </div>
         `
+        void section.offsetWidth
     }, 500)
 }
