@@ -52,7 +52,7 @@ section#Login{
     width: 100%;
     height: 100%;
     animation-name: slide-left-show;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-timing-function: linear;
 
 }
@@ -137,6 +137,9 @@ section#Gestor .main-container{
     padding: 50px 50px;
     width: 100%;
     height: 100%;
+}
+
+section#Gestor .main-container.open{
     animation-name: opacity-show;
     animation-duration: 1s;
     animation-timing-function: ease;
@@ -388,7 +391,7 @@ section#Gestor .action-menu-container{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(30, 38, 56, 80%);
+    background-color: rgba(30, 38, 56, 50%);
     width: 100%;
     height: 100%;
 
@@ -460,6 +463,7 @@ section#Gestor .action-menu-container{
 
         .send{
             display: flex;
+            flex-direction: column;
             justify-content: center;
             margin-top: 25px;
         }
@@ -478,6 +482,23 @@ section#Gestor .action-menu-container{
         input[type='submit']:hover{
             cursor: pointer;
             background-color: #34539c;
+        }
+
+        input[type='button']{
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            color: #FFFFFF;
+            margin-top: 15px;
+            padding: 10px 30px;
+            background-color: #945454;
+            border-style: none;
+            border-radius: 5px;
+        }
+
+        input[type='button']:hover{
+            cursor: pointer;
+            background-color: #9c3434;
         }
     }
     

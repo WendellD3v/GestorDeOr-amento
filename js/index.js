@@ -2,7 +2,33 @@ var section = document.querySelector('section');
 var saldoInicial = 0
 var saldo = 0;
 var rendas = []
-var despesas = []
+var despesas = [
+    {
+        'Despesa': 'Comprar Carne',
+        'Valor': 100,
+
+    },
+
+    {
+        'Despesa': 'Cartão De Crédito',
+        'Valor': 100,
+
+    },
+]
+
+var rendas = [
+    {
+        'Despesa': 'Venda Cyber Scripts',
+        'Valor': 100,
+
+    },
+
+    {
+        'Despesa': 'Salário',
+        'Valor': 1000,
+
+    },
+]
 
 if (section.id == ''){
     section.id = 'Login';
@@ -29,6 +55,76 @@ if (section.id == ''){
 //     section.id = 'Gestor'
 // }
 
+function loadLogs(type, logInfo){
+    var boxSlots = document.querySelector('.logs-containers');
+    if (type == 'Despesas'){
+        boxSlots.innerHTML = ''
+        for (let i = 0; i < despesas.length; i++){
+            boxSlots.innerHTML = boxSlots.innerHTML + `
+                <div class="log-register">
+                    <div class="log-infos">
+                        <div class="log-icon">
+                            <img src="imgs/money.svg" alt="money">
+                        </div>
+                        <div class="info">
+                            <h1>Despesa:</h1>
+                            <p>${despesas[i]['Despesa']}</p>
+                        </div>
+                    </div>
+
+                    <div class="log-actions">
+                        <h1>- R$ ${despesas[i]['Valor']}</h1>
+                        <button><img src="imgs/delete.svg" alt="money"></button>
+                    </div>
+                </div>
+            `
+        }
+    }else if(type == 'Rendas'){
+        boxSlots.innerHTML = ''
+        for (let i = 0; i < rendas.length; i++){
+            boxSlots.innerHTML = boxSlots.innerHTML + `
+                <div class="log-register">
+                    <div class="log-infos">
+                        <div class="log-icon">
+                            <img src="imgs/money.svg" alt="money">
+                        </div>
+                        <div class="info">
+                            <h1>Renda:</h1>
+                            <p>${rendas[i]['Despesa']}</p>
+                        </div>
+                    </div>
+
+                    <div class="log-actions">
+                        <h1>+ R$ ${rendas[i]['Valor']}</h1>
+                        <button><img src="imgs/delete.svg" alt="money"></button>
+                    </div>
+                </div>
+            `
+        }
+    }
+}
+
+function loadReport(){
+    var DespesasTotais = 0
+    var RendasTotais = 0
+    
+    for (let i = 0; i < despesas.length; i++){
+        DespesasTotais = DespesasTotais + despesas[i]['Valor']
+    }
+
+    for (let i = 0; i < rendas.length; i++){
+        RendasTotais = RendasTotais + rendas[i]['Valor']
+    }  
+
+    var total = (RendasTotais + saldo) - DespesasTotais
+
+    document.querySelector('#despesasTotais').innerHTML = DespesasTotais
+    document.querySelector('#rendasTotais').innerHTML = RendasTotais
+    document.querySelector('#Saldo').innerHTML = total
+    document.querySelector('#TotalSaldo').innerHTML = total
+
+}
+
 function loadMoney(){
     event.returnValue = false
     event.cancelable = true
@@ -37,7 +133,7 @@ function loadMoney(){
     section.classList.add('close')
     setTimeout(() =>{
         saldoInicial = saldoInput
-        saldo = saldoInput
+        saldo = parseFloat(saldoInput)
         section.classList.remove('close');
         section.id = 'Gestor';
         section.innerHTML = `
@@ -47,7 +143,7 @@ function loadMoney(){
                         <img src="imgs/bank.svg" alt="banco">
                         <div class="saldo-atual">
                             <h1>Saldo:</h1>
-                            <p>R$ ${saldo}</p>
+                            <p>R$ <span id='Saldo'>${saldo}</span></p>
                         </div>
                     </div>
 
@@ -69,24 +165,68 @@ function loadMoney(){
                     
                     <div class="relatorio">
                         <p><b>Saldo Inicial:</b> R$ ${saldoInicial}</p>
-                        <p><b>Despesas Totais:</b> R$ 100,00</p>
-                        <p><b>Rendas Totais:</b> R$ 100,00</p>
+                        <p><b>Despesas Totais:</b> R$ <span id='despesasTotais'>0</span></p>
+                        <p><b>Rendas Totais:</b> R$ <span id='rendasTotais'>0</span></p>
                     </div>
 
                     <div class="total-saldo">
                         <h2>Saldo Total:</h2>
-                        <h1>R$ ${saldo}</h1>
+                        <h1>R$ <span id='TotalSaldo'>${saldo}</span></h1>
                     </div>
 
                     <div class="gestor-actions">
-                        <button>Adicionar Rendas</button>
+                        <button onclick='actionMenu("Renda")'>Adicionar Rendas</button>
                         <button>Adicionar Despesas</button>
                     </div>
                 </div>
             </div>
         `
-        void section.offsetWidth
+        document.querySelector('.main-container').classList.add('open')
+
+        loadLogs('Despesas')
+        loadReport()
+
+        setInterval(() => {
+            document.querySelector('.main-container').classList.remove('open')
+        }, 1000)
     }, 500)
+}
+
+
+function actionMenu(type){
+    if (!document.querySelector('.action-menu-container')) {
+        if (type == 'Renda') {
+            var section = document.querySelector('section');
+            if (section) {
+                section.innerHTML = section.innerHTML + `
+                <div class="action-menu-container">
+                    <div class="action-container">
+                        <h1>Adicionar Renda</h1>
+                        
+                        <form onsubmit="addAction()">
+                            
+                            <label for="saldo-motivo">Digite o motivo da renda</label>
+                            <br>
+                            <input type="text" name="saldo-motivo" id="motivo-input" placeholder="Ex: Presente De Aniversário" autocomplete="off" required>
+                            <br>
+                            <br>
+                            <label for="Value">Digite o valor adicionado</label>
+                            <br>
+                            <input type="number" name="saldo-input" id="saldo-input" placeholder="0,00" autocomplete="off" required>
+                            <br>
+                            <div class="send">
+                                <input type="submit" value="Adicionar">
+                                <input type="button" onclick="closeAction()" value="Fechar">
+                            </div>
+
+                            
+                        </form>
+                    </div>
+                </div>
+                `
+            }
+        }
+    }
 }
 
 function changeTypes(type){
@@ -96,11 +236,36 @@ function changeTypes(type){
         if (!rendaButton.classList.contains('selected')) {
             rendaButton.classList.add('selected');
             despesasButton.classList.remove('selected');
+            loadLogs('Rendas')
         }
     }else if(type === 'Despesa'){
         if (!despesasButton.classList.contains('selected')) {
             despesasButton.classList.add('selected');
             rendaButton.classList.remove('selected');
+            loadLogs('Despesas')
         }
     }
+}
+
+function addAction(type) {
+    event.returnValue = false
+    event.cancelable = true
+    if (document.querySelector('.action-menu-container')){
+        var motivo = document.querySelector('#motivo-input').value
+        
+        if (type == 'Renda'){
+            rendas.push({
+                'Despesa': 'Venda Cyber Scripts',
+                'Valor': 100,
+            })
+        }
+
+        console.log('Adicionado')
+    }
+}
+
+function closeAction(){
+    if (document.querySelector('.action-menu-container')) {
+        document.querySelector('.action-menu-container').remove()
+    }    
 }
