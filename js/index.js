@@ -1,34 +1,8 @@
 var section = document.querySelector('section');
 var saldoInicial = 0
 var saldo = 0;
+var despesas = []
 var rendas = []
-var despesas = [
-    {
-        'Despesa': 'Comprar Carne',
-        'Valor': 100,
-
-    },
-
-    {
-        'Despesa': 'Cartão De Crédito',
-        'Valor': 100,
-
-    },
-]
-
-var rendas = [
-    {
-        'Despesa': 'Venda Cyber Scripts',
-        'Valor': 100,
-
-    },
-
-    {
-        'Despesa': 'Salário',
-        'Valor': 1000,
-
-    },
-]
 
 if (section.id == ''){
     section.id = 'Login';
@@ -61,7 +35,7 @@ function loadLogs(type, logInfo){
         boxSlots.innerHTML = ''
         for (let i = 0; i < despesas.length; i++){
             boxSlots.innerHTML = boxSlots.innerHTML + `
-                <div class="log-register">
+                <div class="log-register" id='${i}'>
                     <div class="log-infos">
                         <div class="log-icon">
                             <img src="imgs/money.svg" alt="money">
@@ -74,7 +48,7 @@ function loadLogs(type, logInfo){
 
                     <div class="log-actions">
                         <h1>- R$ ${despesas[i]['Valor']}</h1>
-                        <button><img src="imgs/delete.svg" alt="money"></button>
+                        <button onclick='removeValue("Despesa", ${i})'><img src="imgs/delete.svg" alt="money"></button>
                     </div>
                 </div>
             `
@@ -96,7 +70,7 @@ function loadLogs(type, logInfo){
 
                     <div class="log-actions">
                         <h1>+ R$ ${rendas[i]['Valor']}</h1>
-                        <button><img src="imgs/delete.svg" alt="money"></button>
+                        <button onclick='removeValue("Renda", ${i})'><img src="imgs/delete.svg" alt="money"></button>
                     </div>
                 </div>
             `
@@ -176,7 +150,7 @@ function loadMoney(){
 
                     <div class="gestor-actions">
                         <button onclick='actionMenu("Renda")'>Adicionar Rendas</button>
-                        <button>Adicionar Despesas</button>
+                        <button onclick='actionMenu("Despesa")'>Adicionar Despesas</button>
                     </div>
                 </div>
             </div>
@@ -203,7 +177,7 @@ function actionMenu(type){
                     <div class="action-container">
                         <h1>Adicionar Renda</h1>
                         
-                        <form onsubmit="addAction()">
+                        <form onsubmit="addAction('Renda')">
                             
                             <label for="saldo-motivo">Digite o motivo da renda</label>
                             <br>
@@ -211,6 +185,36 @@ function actionMenu(type){
                             <br>
                             <br>
                             <label for="Value">Digite o valor adicionado</label>
+                            <br>
+                            <input type="number" name="saldo-input" id="saldo-input" placeholder="0,00" autocomplete="off" required>
+                            <br>
+                            <div class="send">
+                                <input type="submit" value="Adicionar">
+                                <input type="button" onclick="closeAction()" value="Fechar">
+                            </div>
+
+                            
+                        </form>
+                    </div>
+                </div>
+                `
+            }
+        }else if (type == 'Despesa'){
+            var section = document.querySelector('section');
+            if (section) {
+                section.innerHTML = section.innerHTML + `
+                <div class="action-menu-container">
+                    <div class="action-container">
+                        <h1>Adicionar Despesa</h1>
+                        
+                        <form onsubmit="addAction('Despesa')">
+                            
+                            <label for="saldo-motivo">Digite o motivo da despesa</label>
+                            <br>
+                            <input type="text" name="saldo-motivo" id="motivo-input" placeholder="Ex: Presente De Aniversário" autocomplete="off" required>
+                            <br>
+                            <br>
+                            <label for="Value">Digite o valor removido</label>
                             <br>
                             <input type="number" name="saldo-input" id="saldo-input" placeholder="0,00" autocomplete="off" required>
                             <br>
@@ -251,15 +255,35 @@ function addAction(type) {
     event.returnValue = false
     event.cancelable = true
     if (document.querySelector('.action-menu-container')){
-        var motivo = document.querySelector('#motivo-input').value
+        var motivo = document.querySelector('#motivo-input').value;
+        var valor = document.querySelector('#saldo-input').value;
+        var rendaButton = document.querySelector('#RendasType');
+        var despesasButton = document.querySelector('#DespesasType');
         
         if (type == 'Renda'){
             rendas.push({
-                'Despesa': 'Venda Cyber Scripts',
-                'Valor': 100,
+                'Despesa': `${motivo}`,
+                'Valor': parseFloat(valor),
             })
-        }
 
+            if (rendaButton.classList.contains('selected')) {
+                loadLogs('Rendas')
+                console.log('Carregado')
+            }
+            loadReport()
+            document.querySelector('.action-menu-container').remove();
+        }else if (type == 'Despesa'){
+            despesas.push({
+                'Despesa': `${motivo}`,
+                'Valor': parseFloat(valor),
+            })
+
+            if (despesasButton.classList.contains('selected')) {
+                loadLogs('Despesas')
+            }
+            loadReport()
+            document.querySelector('.action-menu-container').remove();
+        }
         console.log('Adicionado')
     }
 }
@@ -268,4 +292,17 @@ function closeAction(){
     if (document.querySelector('.action-menu-container')) {
         document.querySelector('.action-menu-container').remove()
     }    
+}
+
+function removeValue(type, id){
+    console.log('Acionada')
+    if (type == 'Despesa'){
+        despesas.shift(parseInt(id), 1)
+        loadLogs('Despesas')
+        loadReport()
+    }else if (type == 'Renda'){
+        rendas.shift(parseInt(id), 1)
+        loadLogs('Rendas')
+        loadReport()
+    }
 }
