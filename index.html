@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="O gestor de orçamento perfeito para organizar sua vida">
+    <meta name="author" content="Wendell Dev">
+    
+    <title>Gestor</title>
+
+    <!-- Links -->
+    <link rel="shortcut icon" href="imgs/bank.svg" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <!-- <section id="Login">
+
+        <div class="login">
+            
+            <h1>Gestor de orçamentos</h1>
+            
+            <form onsubmit="loadMoney()">
+                <label for="Value">Digite seu saldo atual</label>
+                <br>
+                <input type="number" name="saldo-input" id="saldo-input" placeholder="0,00" required>
+                <br>
+                <div class="send">
+                    <input type="submit" value="Iniciar">
+                </div>
+            </form>
+        </div>
+    </section> -->
+    <!-- <section id="Gestor">
+
+        <div class="main-container">
+            <div class="general-info">
+                <div class="saldo-container">
+                    <img src="imgs/bank.svg" alt="banco">
+                    <div class="saldo-atual">
+                        <h1>Saldo:</h1>
+                        <p>R$ 100,00</p>
+                    </div>
+                </div>
+
+                <div class="actions-container">
+                    <div class="actions-types">
+                        <button class="selected">Despesas</button>
+                        <button>Rendas</button>
+                    </div>
+
+                    <div class="logs-containers">
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+                        
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+                        
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+
+                        <div class="log-register">
+                            <div class="log-infos">
+                                <div class="log-icon">
+                                    <img src="imgs/money.svg" alt="money">
+                                </div>
+                                <div class="info">
+                                    <h1>Despesa:</h1>
+                                    <p>Cartão De Crédito</p>
+                                </div>
+                            </div>
+
+                            <div class="log-actions">
+                                <h1>- R$ 100,00</h1>
+                                <button><img src="imgs/delete.svg" alt="money"></button>
+                            </div>
+                        </div>
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="general-saldo">
+                <div class="saldo-title">
+                    <h1>Relatório De Gastos</h1>
+                </div>
+                
+                <div class="relatorio">
+                    <p><b>Saldo Inicial:</b> R$ 100,00</p>
+                    <p><b>Despesas Totais:</b> R$ 100,00</p>
+                    <p><b>Rendas Totais:</b> R$ 100,00</p>
+                </div>
+
+                <div class="total-saldo">
+                    <h2>Saldo Total:</h2>
+                    <h1>R$ 1.000,00</h1>
+                </div>
+
+                <div class="gestor-actions">
+                    <button>Adicionar Rendas</button>
+                    <button>Adicionar Despesas</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-menu-container">
+            
+            <div class="action-container">
+                <h1>Adicionar Renda</h1>
+                
+                <form onsubmit="loadMoney()">
+                    
+                    <label for="saldo-motivo">Digite o motivo da renda</label>
+                    <br>
+                    <input type="text" name="saldo-motivo" id="saldo-input" placeholder="Ex: Presente De Aniversário" autocomplete="off" required>
+                    <br>
+                    <br>
+                    <label for="Value">Digite o valor adicionado</label>
+                    <br>
+                    <input type="number" name="saldo-input" id="saldo-input" placeholder="0,00" autocomplete="off" required>
+                    <br>
+                    <div class="send">
+                        <input type="submit" value="Adicionar">
+                        <input type="button" value="Fechar">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section> -->
+
+    <section></section>
+    <script src="js/index.js"></script>
+</body>
+</html>
