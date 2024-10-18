@@ -24,11 +24,6 @@ if (section.id == ''){
     `
 }
 
-
-// if (section.id == ''){
-//     section.id = 'Gestor'
-// }
-
 function loadLogs(type, logInfo){
     var boxSlots = document.querySelector('.logs-containers');
     if (type == 'Despesas'){
@@ -138,9 +133,9 @@ function loadMoney(){
                     </div>
                     
                     <div class="relatorio">
-                        <p><b>Saldo Inicial:</b>${(saldoInicial).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</p>
-                        <p><b>Despesas Totais:</b><span id='despesasTotais'>0</span></p>
-                        <p><b>Rendas Totais:</b><span id='rendasTotais'>0</span></p>
+                        <p><b>Saldo Inicial:</b> ${(parseFloat(saldoInicial)).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</p>
+                        <p><b>Despesas Totais:</b> <span id='despesasTotais'>0</span></p>
+                        <p><b>Rendas Totais:</b> <span id='rendasTotais'>0</span></p>
                     </div>
 
                     <div class="total-saldo">
