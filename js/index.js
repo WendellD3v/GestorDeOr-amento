@@ -47,7 +47,7 @@ function loadLogs(type, logInfo){
                     </div>
 
                     <div class="log-actions">
-                        <h1>- R$ ${despesas[i]['Valor']}</h1>
+                        <h1>-${(despesas[i]['Valor']).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</h1>
                         <button onclick='removeValue("Despesa", ${i})'><img src="imgs/delete.svg" alt="money"></button>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ function loadLogs(type, logInfo){
                     </div>
 
                     <div class="log-actions">
-                        <h1>+ R$ ${rendas[i]['Valor']}</h1>
+                        <h1>+${(rendas[i]['Valor']).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</h1>
                         <button onclick='removeValue("Renda", ${i})'><img src="imgs/delete.svg" alt="money"></button>
                     </div>
                 </div>
@@ -92,10 +92,10 @@ function loadReport(){
 
     var total = (RendasTotais + saldo) - DespesasTotais
 
-    document.querySelector('#despesasTotais').innerHTML = DespesasTotais
-    document.querySelector('#rendasTotais').innerHTML = RendasTotais
-    document.querySelector('#Saldo').innerHTML = total
-    document.querySelector('#TotalSaldo').innerHTML = total
+    document.querySelector('#despesasTotais').innerHTML = (DespesasTotais).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+    document.querySelector('#rendasTotais').innerHTML = (RendasTotais).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+    document.querySelector('#Saldo').innerHTML = (total).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
+    document.querySelector('#TotalSaldo').innerHTML = (total).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
 
 }
 
@@ -117,7 +117,7 @@ function loadMoney(){
                         <img src="imgs/bank.svg" alt="banco">
                         <div class="saldo-atual">
                             <h1>Saldo:</h1>
-                            <p>R$ <span id='Saldo'>${saldo}</span></p>
+                            <p><span id='Saldo'>${(saldo).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span></p>
                         </div>
                     </div>
 
@@ -138,14 +138,14 @@ function loadMoney(){
                     </div>
                     
                     <div class="relatorio">
-                        <p><b>Saldo Inicial:</b> R$ ${saldoInicial}</p>
-                        <p><b>Despesas Totais:</b> R$ <span id='despesasTotais'>0</span></p>
-                        <p><b>Rendas Totais:</b> R$ <span id='rendasTotais'>0</span></p>
+                        <p><b>Saldo Inicial:</b>${(saldoInicial).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</p>
+                        <p><b>Despesas Totais:</b><span id='despesasTotais'>0</span></p>
+                        <p><b>Rendas Totais:</b><span id='rendasTotais'>0</span></p>
                     </div>
 
                     <div class="total-saldo">
                         <h2>Saldo Total:</h2>
-                        <h1>R$ <span id='TotalSaldo'>${saldo}</span></h1>
+                        <h1><span id='TotalSaldo'>${(saldo).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})}</span></h1>
                     </div>
 
                     <div class="gestor-actions">
